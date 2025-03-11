@@ -12,7 +12,7 @@ package.domain = org.test
 source.dir = .
 
 # (list) List of inclusions using pattern matching
-#source.include_patterns = assets/*,images/*.png,modules/*
+#source.include_patterns = assets/*,images/*.png,modules/*,*.env,*.py
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
