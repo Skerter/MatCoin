@@ -8,6 +8,7 @@ DB_HOST = "195.26.227.31"
 DB_LOGIN = "matcoin_user"
 DB_PASSWORD = "ya_daun_228"
 DB_DATABASE = "matcoin"
+SECRET_KEY = "matcoin_secret_438838fgdfh34yhgrry4354h452caszjnhgk3"
 
 log_folder = "log"
 os.makedirs(log_folder, exist_ok=True)
@@ -68,5 +69,36 @@ async def example_db_work():
         conn.close()
         return result
 
+async def login_to_app(username: str, password: str):
+    conn = await connect_db()
+    try:
+        async with conn.cursor() as cursor:
+            query = """
+                SELECT password FROM users WHERE username = %s
+            """
+            await cursor.execute(query, (username,))
+            result_raw = await cursor.fetchone()
+
+            if result_raw:
+                stored_password = result_raw[0]
+                if stored_password == password:
+                    logger.info(f"Успешный вход для пользователя {username}")
+                    return True
+                else:
+                    logger.warning(f"Неверный пароль для пользователя {username}")
+                    return False
+            else:
+                logger.warning(f"Пользователь {username} не найден")
+                return False
+
+    except aiomysql.MySQLError as e:
+        logger.error(f"Ошибка при работе с БД: {e}")
+        return False
+    except Exception as e:
+        logger.error(f"Неизвестная ошибка: {e}")
+        return False
+    finally:
+        conn.close()
+
 if __name__ == "__main__":
-    logger.info(asyncio.run(example_db_work()))
+    logger.info(asyncio.run(login_to_app('sosal', '52')))
