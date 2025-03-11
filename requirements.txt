@@ -1,7 +1,7 @@
 async_timeout
 aiomysql
 aiofiles
-kivy
+kivy==2.3.1
 requests
 pytz
 python-dotenv
