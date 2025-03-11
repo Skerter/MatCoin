@@ -16,6 +16,8 @@ source.include_patterns = modules/*
 
 version = 1.0.0
 
+source.dir = .
+
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
 # version.filename = %(source.dir)s/main.py
