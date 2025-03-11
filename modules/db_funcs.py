@@ -13,7 +13,7 @@ DB_DATABASE = os.getenv('DB_DATABASE')
 
 log_folder = "log"
 os.makedirs(log_folder, exist_ok=True)
-log_file = os.path.join(log_folder, "main.log")
+log_file = os.path.join(log_folder, "db.log")
 
 tmp_folder = "./tmp"
 os.makedirs(tmp_folder, exist_ok=True)
