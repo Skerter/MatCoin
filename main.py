@@ -7,7 +7,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 
-kivy.require('2.3.1')
+kivy.require('2.3.0')
 os.environ['KIVY_TEXT'] = 'pil'
 
 log_folder = "log"
