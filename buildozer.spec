@@ -9,7 +9,7 @@ package.name = matcoin
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
 
-# (str) Source code where the app.py live
+# (str) Source code where the main.py live
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
@@ -33,7 +33,7 @@ version = 0.1
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
-# version.filename = %(source.dir)s/app.py
+# version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
