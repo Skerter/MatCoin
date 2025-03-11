@@ -1,10 +1,14 @@
 [app]
 
+version = 1.0.0
+
 title = MatCoin
 
 package.name = matcoin
 
 package.domain = org.test
+
+requirements = python3,kivy,rich,aiomysql,pygments
 
 source.include_exts = py,png,jpg,kv,atlas
 
@@ -14,17 +18,7 @@ source.exclude_dirs = tests, bin, venv
 
 source.include_patterns = modules/*
 
-version = 1.0.0
-
 source.dir = .
-
-# (str) Application versioning (method 2)
-# version.regex = __version__ = ['"](.*)['"]
-# version.filename = %(source.dir)s/main.py
-
-# (list) Application requirements
-# comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,rich,aiomysql
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
