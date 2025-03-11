@@ -1,0 +1,8 @@
+async_timeout
+aiomysql
+aiofiles
+kivy
+requests
+pytz
+python-dotenv
+rich
