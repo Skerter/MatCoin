@@ -86,7 +86,6 @@ class LoginScreen(GridLayout):
     def close_popup(self, instance):
         self.popup.dismiss()
 
-# Главный класс приложения
 class matcoinapp(App):
     def build(self):
         return LoginScreen()
