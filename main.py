@@ -57,4 +57,7 @@ class MatCoinApp(App):
 
 
 if __name__ == '__main__':
-    MatCoinApp().run()
+    try:
+        MatCoinApp().run()
+    except Exception as e:
+        logger.critical(e)
