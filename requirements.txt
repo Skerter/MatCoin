@@ -6,3 +6,5 @@ requests
 pytz
 python-dotenv
 rich
+buildozer
+Cython==0.29.33
