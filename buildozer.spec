@@ -3,7 +3,7 @@
 title = MatCoin
 package.name = MatCoinApp
 source.include_exts = py,png,jpg,kv,atlas,env
-requirements = python3,kivy,rich,aiomysql,asyncio
+requirements = python3,kivy
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
