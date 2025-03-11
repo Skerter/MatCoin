@@ -1,15 +1,13 @@
 import aiomysql
-import dotenv
 import os
 import logging
 import asyncio
 from rich.logging import RichHandler
 
-dotenv.load_dotenv()
-DB_HOST = os.getenv('DB_HOST')
-DB_LOGIN = os.getenv('DB_LOGIN')
-DB_PASSWORD = os.getenv('DB_PASSWORD')
-DB_DATABASE = os.getenv('DB_DATABASE')
+DB_HOST = "195.26.227.31"
+DB_LOGIN = "matcoin_user"
+DB_PASSWORD = "ya_daun_228"
+DB_DATABASE = "matcoin"
 
 log_folder = "log"
 os.makedirs(log_folder, exist_ok=True)

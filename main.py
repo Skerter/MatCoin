@@ -29,9 +29,9 @@ class LoginScreen(GridLayout):
         self.password = TextInput(password=True, multiline=False)
         self.add_widget(self.password)
 
-class MatCoinApp(App):
+class matcoinapp(App):
     def build(self):
         return LoginScreen()
 
 if __name__ == '__main__':
-    MatCoinApp().run()
+    matcoinapp().run()
