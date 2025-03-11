@@ -1,15 +1,14 @@
 import dotenv
 import os
 import logging
-import asyncio
+import asyncio # noqa
 from rich.logging import RichHandler
 import kivy
-kivy.require('2.3.1')
-
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
+kivy.require('2.3.1')
 
 dotenv.load_dotenv()
 DEV_MODE = os.getenv('DEV_MODE')
