@@ -12,6 +12,8 @@ source.exclude_exts = spec
 
 source.exclude_dirs = tests, bin, venv
 
+source.include_patterns = modules/*
+
 version = 1.0.0
 
 requirements = python3,kivy
