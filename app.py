@@ -8,7 +8,10 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
+
+
 kivy.require('2.3.1')
+os.environ['KIVY_TEXT'] = 'pil'
 
 dotenv.load_dotenv()
 DEV_MODE = os.getenv('DEV_MODE')
