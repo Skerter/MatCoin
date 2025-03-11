@@ -6,6 +6,8 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
+import logging 
+from rich.logging import RichHandler
 
 kivy.require('2.3.0')
 os.environ['KIVY_TEXT'] = 'pil'
@@ -13,6 +15,20 @@ os.environ['KIVY_TEXT'] = 'pil'
 log_folder = "log"
 os.makedirs(log_folder, exist_ok=True)
 log_file = os.path.join(log_folder, "main.log")
+
+tmp_folder = "./tmp"
+os.makedirs(tmp_folder, exist_ok=True)
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(message)s",
+    datefmt="[%X]",
+    handlers=[
+        RichHandler(),
+        logging.FileHandler(log_file, encoding="utf-8")
+    ]
+)
+logger = logging.getLogger("rich")
 
 tmp_folder = "./tmp"
 os.makedirs(tmp_folder, exist_ok=True)
