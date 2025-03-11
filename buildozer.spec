@@ -8,7 +8,7 @@ package.name = matcoin
 
 package.domain = org.test
 
-requirements = python3,kivy,rich,aiomysql,pygments
+requirements = python3,kivy,rich,aiomysql,pygments,pymysql
 
 source.include_exts = py,png,jpg,kv,atlas
 
