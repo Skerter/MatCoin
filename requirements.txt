@@ -8,3 +8,4 @@ rich
 buildozer
 setuptools==65.5.0
 Cython==0.29.33
+ruff
