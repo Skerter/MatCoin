@@ -1,10 +1,9 @@
 [app]
 
-# (str) Title of your application
 title = MatCoin
-
-# (str) Package name
-package.name = matcoin
+package.name = MatCoinApp
+source.include_exts = py,png,jpg,kv,atlas,env
+requirements = python3,kivy,rich,python-dotenv,aiomysql,asyncio
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = org.test
@@ -12,11 +11,8 @@ package.domain = org.test
 # (str) Source code where the main.py live
 source.dir = .
 
-# (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,txt,env,md
-
 # (list) List of inclusions using pattern matching
-#source.include_patterns = assets/*,images/*.png
+#source.include_patterns = assets/*,images/*.png,modules/*
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -34,10 +30,6 @@ version = 0.1
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
 # version.filename = %(source.dir)s/main.py
-
-# (list) Application requirements
-# comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,aiomysql,rich,python-dotenv
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -67,7 +59,7 @@ orientation = portrait
 osx.python_version = 3
 
 # Kivy version to use
-osx.kivy_version = 1.9.1
+osx.kivy_version = 2.3.1
 
 #
 # Android specific

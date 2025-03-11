@@ -3,7 +3,6 @@ __version__ = "1.0.0"
 import dotenv
 import os
 import logging
-import asyncio # noqa
 from rich.logging import RichHandler
 import kivy
 from kivy.app import App
