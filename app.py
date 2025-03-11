@@ -1,3 +1,5 @@
+__version__ = "1.0.0"
+
 import dotenv
 import os
 import logging
