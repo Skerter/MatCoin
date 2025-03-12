@@ -44,10 +44,9 @@ async def connect_db():
         except Exception as e:
             logger.error(f"Попытка {attempt+1} не удалась: {e}")
             if attempt < retry_count - 1:
-                await asyncio.sleep(10*attempt)
+                await asyncio.sleep(10*attempt+1)
             else:
                 logger.critical(f"Не удалось подключиться к базе данных после {retry_count} попыток.")
-                raise e
 
 async def example_db_work():
     conn = await connect_db()
