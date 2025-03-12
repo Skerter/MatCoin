@@ -1,7 +1,8 @@
-__version__ = "1.0.0"
-
+import logging
 import os
 import kivy
+import asyncio
+
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -9,36 +10,19 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
-import logging 
-from rich.logging import RichHandler
-import asyncio
-from modules import db_funcs
 
-kivy.require('2.3.0')
-os.environ['KIVY_TEXT'] = 'pil'
+from modules import db_funcs
+from modules.logger_config import configure_logger
 
 log_folder = "log"
 os.makedirs(log_folder, exist_ok=True)
-log_file = os.path.join(log_folder, "main.log")
+logger = configure_logger("main")
 
 tmp_folder = "./tmp"
 os.makedirs(tmp_folder, exist_ok=True)
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(message)s",
-    datefmt="[%X]",
-    handlers=[
-        RichHandler(),
-        logging.FileHandler(log_file, encoding="utf-8")
-    ]
-)
-
-logger = logging.getLogger("rich")
-
-tmp_folder = "./tmp"
-os.makedirs(tmp_folder, exist_ok=True)
-
+kivy.require('2.3.0')
+os.environ['KIVY_TEXT'] = 'pil'
 logging.info("Starting the application...")
 
 class LoginScreen(GridLayout):
@@ -64,11 +48,23 @@ class LoginScreen(GridLayout):
             asyncio.run(self.handle_login(username, password))
         else:
             self.show_popup("Заполните все поля", "OK")
-
+    
     async def handle_login(self, username, password):
-        result = await db_funcs.login_to_app(username, password)
-        if result:
-            self.show_popup("Вы успешно вошли", "OK")
+        if username and password:
+            logger.info(f"Вхожу в аккаунт {username}...")
+            try:
+                if await db_funcs.username_exists(username):
+                    result = await db_funcs.login_to_app(username, password)
+                else:
+                    result = False
+            except Exception as e:
+                logger.error(f"Ошибка при выполнении запроса: {e}")
+                result = False
+                
+            if result:
+                self.show_popup("Вы успешно вошли", "OK")
+            else:
+                self.show_popup("Неправильный логин или пароль", "OK")
         else:
             self.show_popup("Неправильный логин или пароль", "OK")
 
