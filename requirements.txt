@@ -7,6 +7,10 @@ pytz
 rich
 buildozer
 setuptools==65.5.0
+wheel
 Cython==0.29.33
 ruff
 pygments
+pyOpenSSL
+cryptography
+python-for-android

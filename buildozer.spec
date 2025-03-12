@@ -12,7 +12,7 @@ requirements = python3,kivy,rich,aiomysql,pygments,pymysql
 
 source.include_exts = py,png,jpg,kv,atlas
 
-source.exclude_exts = spec
+# source.exclude_exts = spec
 
 source.exclude_dirs = tests, bin, venv
 
