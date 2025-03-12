@@ -3,7 +3,10 @@ import os
 import aiomysql
 import time
 
-from modules.logger_config import configure_logger
+try:
+    from modules.logger_config import configure_logger
+except ModuleNotFoundError:
+    from logger_config import configure_logger
 
 DB_HOST = "195.26.227.31"
 DB_LOGIN = "matcoin_user"
@@ -44,7 +47,7 @@ async def close_connection(conn : aiomysql.Connection):
 
 async def login_to_app(username: str, password: str):
     """Проверка входа пользователя."""
-    logger.info(f"Проверяю {username} с паролем {password} в базе...")
+    logger.info(f"Проверяю {username} с паролем {password} в базе")
     conn = None
     try:
         conn = await open_connection()
@@ -75,7 +78,7 @@ async def login_to_app(username: str, password: str):
 
 async def username_exists(username: str) -> bool:
     """Проверка, существует ли юзернейм в базе данных."""
-    logger.info(f"Ищу {username} в базе...")
+    logger.info(f"Ищу {username} в базе")
     conn = None
     try:
         conn = await open_connection()
@@ -100,7 +103,14 @@ async def username_exists(username: str) -> bool:
         await close_connection(conn)
 
 async def benchmark():
-    tasks = [login_to_app('sosal', '52') for _ in range(100)]
+    async def test():
+        if await username_exists('sosal'):
+            logger.info("Юзернейм найден!")
+            return await login_to_app('sosal', '52')
+        else:
+            logger.critical("Юзернейм не найден!")
+        
+    tasks = [test() for _ in range(100)]
     start_time = time.time()
     results = await asyncio.gather(*tasks)
     end_time = time.time()

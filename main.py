@@ -1,8 +1,13 @@
-import logging
 import os
-import kivy
-import asyncio
+os.environ["KIVY_NO_FILELOG"] = "1"
+os.environ["KIVY_NO_CONSOLELOG"] = "1"
+os.environ["KIVY_LOG_LEVEL"] = "critical"
+os.environ["KIVY_LOG_MODE"] = "PYTHON"
 
+import asyncio
+import logging
+
+import kivy
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
@@ -10,6 +15,7 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.boxlayout import BoxLayout
+from kivy.logger import Logger
 
 from modules import db_funcs
 from modules.logger_config import configure_logger
@@ -21,6 +27,10 @@ logger = configure_logger("main")
 tmp_folder = "./tmp"
 os.makedirs(tmp_folder, exist_ok=True)
 
+Logger.disabled = True
+logging.getLogger("kivy").propagate = False
+logging.getLogger("kivy").setLevel(logging.INFO)
+    
 kivy.require('2.3.0')
 os.environ['KIVY_TEXT'] = 'pil'
 logging.info("Starting the application...")
