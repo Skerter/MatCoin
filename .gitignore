@@ -3,3 +3,4 @@ venv/
 tmp/
 log/*
 .buildozer/
+__pycache__/
